@@ -11,19 +11,24 @@
 
     <!-- Styles -->
     <style>
-
+        .banner {
+            background-image: url('image/pharmacy-bg2.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+        }
     </style>
 </head>
 
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #007bff;">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: white;">
             <div class="container">
-                <a href="#" class="navbar-brand">
-                    <img src="../image/logo.png" alt="" width="40" height="30" loading="lazy"
+                <a href="{{ url('/') }}" class="navbar-brand">
+                    <img src="../image/pharmacy-logo.png" alt="" width="40" height="30" loading="lazy"
                         class="d-inline-block align-top">
-                    <span class="text-white">Phar<span class="text-danger">macy</span></span>
+                    <span class="text-info fw-bold">Phar<span class="text-success">macy</span></span>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -34,10 +39,10 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="{{ url('login') }}" class="nav-link text-white">Login</a>
+                            <a href="{{ url('login') }}" class="nav-link text-black">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('register') }}" class="nav-link text-white">Register</a>
+                            <a href="{{ url('register') }}" class="nav-link text-black">Register</a>
                         </li>
                     </ul>
                 </div>
