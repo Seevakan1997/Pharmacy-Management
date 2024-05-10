@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\CostomerController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PrecriptionController;
 use App\Http\Controllers\PreparedQuotationController;
@@ -22,10 +24,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Auth
+
 Route::get('register', [RegisterController::class, 'index']);
 Route::get('login', [LoginController::class, 'index'])->name('login');
 
+//Admin
 
+Route::get('admin-dashboard', [AdminDashboardController::class, 'index']);
+Route::view('sales', 'Admin.sales');
+Route::get('customers', [CostomerController::class, 'index']);
+
+//User
 
 Route::get('user-dashboard', [UserDashboardController::class, 'index']);
 Route::get('prescription-history', [PrecriptionController::class, 'index']);
