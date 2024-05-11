@@ -22,24 +22,40 @@
                         <th colspan="5" class="text-center">Images</th>
                     </tr>
                 </thead>
+                @php $i=1; @endphp
 
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Sample Note 1</td>
-                        <td>Sample Address 1</td>
-                        <td class="text-center"><img src="" alt="Image 1" width="50px" height="50px"
-                                class="rounded-circle"></td>
-                        <td class="text-center"><img src="" alt="Image 2" width="50px" height="50px"
-                                class="rounded-circle"></td>
-                        <td class="text-center"><img src="" alt="Image 3" width="50px" height="50px"
-                                class="rounded-circle"></td>
-                        <td class="text-center"><img src="" alt="Image 4" width="50px" height="50px"
-                                class="rounded-circle"></td>
-                        <td class="text-center"><img src="" alt="Image 5" width="50px" height="50px"
-                                class="rounded-circle"></td>
-                    </tr>
-                    <!-- Additional rows can be added here -->
+                    @forelse ($user as $row)
+                        <tr>
+                            <td>{{ $i++ }}</td>
+                            <td>{{ $row->note }}</td>
+                            <td>{{ $row->address }}</td>
+                            <td class="text-center"><a href="{{ asset($row->image1) }}" target="_blank"><img
+                                        src="{{ asset($row->image1) }}" alt="" width="50px" height="50px"
+                                        class="rounded-circle"></a>
+                            </td>
+                            <td class="text-center"><a href="{{ asset($row->image2) }}" target="_blank"><img
+                                        src="{{ asset($row->image2) }}" alt="" width="50px" height="50px"
+                                        class="rounded-circle"></a>
+                            </td>
+                            <td class="text-center"><a href="{{ asset($row->image3) }}" target="_blank"><img
+                                        src="{{ asset($row->image3) }}" alt="" width="50px" height="50px"
+                                        class="rounded-circle"></a>
+                            </td>
+                            <td class="text-center"><a href="{{ asset($row->image4) }}" target="_blank"><img
+                                        src="{{ asset($row->image4) }}" alt="" width="50px" height="50px"
+                                        class="rounded-circle"></a>
+                            </td>
+                            <td class="text-center"><a href="{{ asset($row->image5) }}" target="_blank"><img
+                                        src="{{ asset($row->image5) }}" alt="" width="50px" height="50px"
+                                        class="rounded-circle"></a>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td class="text-center text-danger" colspan="8">No Data Record</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

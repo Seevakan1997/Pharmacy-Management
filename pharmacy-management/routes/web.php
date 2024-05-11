@@ -30,8 +30,10 @@ Route::get('/', function () {
 
 Route::get('register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('store', [RegisterController::class, 'store']);
-Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('authenticate', [LoginController::class, 'store']);
+
+Route::get('logout', [LoginController::class, 'logout']);
 
 //Admin
 
@@ -53,3 +55,4 @@ Route::get('user-dashboard', [UserDashboardController::class, 'index']);
 Route::get('prescription-history', [PrecriptionController::class, 'index']);
 Route::view('upload-prescription', 'user.upload-prescription');
 Route::get('prepared-quotation', [PreparedQuotationController::class, 'index']);
+Route::post('precription-store', [PrecriptionController::class, 'store']);

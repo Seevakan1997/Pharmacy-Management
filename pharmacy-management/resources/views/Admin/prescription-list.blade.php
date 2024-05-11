@@ -21,21 +21,31 @@
                     <th scope="col">Action</th>
                 </thead>
 
+                @php $i=1 @endphp
+
                 <tbody>
                     <tr>
+                        @forelse ($precription as $row)
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ $i++ }}</td>
+                        <td>{{ $row->user->name }}</td>
+                        <td>{{ $row->note }}</td>
+                        <td>{{ $row->address }}</td>
                         <td>
-                            <a href="" class="btn btn-primary">Add medications</a>
-                            <img src="https://sahussaintu.files.wordpress.com/2018/04/newgif5.gif" alt=""
-                                width="60" height="60">
-                            <a href="" class="btn btn-success">Update Medications</a>
+                            @if ($row->confirm == 0)
+                                <a href="{{ url('uploaded-prescriptions') }}/{{ $row->id }}"
+                                    class="btn btn-primary">Add medications</a>
+                                <img src="https://sahussaintu.files.wordpress.com/2018/04/newgif5.gif" alt=""
+                                    width="60" height="60">
+                            @elseif($row->confirm == 1)
+                                <a href="{{ url('uploaded-prescriptions') }}/{{ $row->id }}"
+                                    class="btn btn-success">Update Medications</a>
+                            @endif
                         </td>
                     </tr>
+                @empty
                     <td colspan="5" class="text-danger text-center font-weight-bold">No Data Record</td>
+                    @endforelse
                     </tr>
                 </tbody>
             </table>

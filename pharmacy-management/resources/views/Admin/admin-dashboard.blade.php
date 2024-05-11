@@ -14,7 +14,7 @@
                     <p class="card-text">New Prescription</p>
                 </div>
                 <div class="card-footer text-center font-weight-bold bg-primary">
-                    <a href="{{ url('precribtion-list') }}" class="text-white"><span>More Info <i
+                    <a href="{{ url('prescription-list') }}" class="text-white"><span>More Info <i
                                 class="fa fa-arrow-circle-right" aria-hidden="true"></i></span></a>
                 </div>
             </div>

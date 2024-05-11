@@ -30,9 +30,14 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-
-                                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt=""
-                                    width="30" height="30" loading="lazy" class="d-inline-block">
+                                @if (Auth::user()->user_image)
+                                    <img src="{{ asset(Auth::user()->user_image) }}" alt="" width="30"
+                                        height="30" loading="lazy" class="d-inine-block rounded-circle">
+                                @else
+                                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt=""
+                                        width="30" height="30" loading="lazy" class="d-inine-block">
+                                @endif
+                                {{ Auth::user()->name }}
 
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

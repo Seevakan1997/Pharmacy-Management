@@ -35,7 +35,7 @@
                             <a href="{{}}" class="btn btn-primary">View</a>
                         </td>
                     </tr>
-                    <!-- Repeat this row structure for each data row -->
+
                 </tbody>
             </table>
         </div>
