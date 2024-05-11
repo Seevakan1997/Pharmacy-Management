@@ -20,24 +20,21 @@
                     <span class="text-info fw-bold">Phar<span class="text-success">macy</span></span>
                 </a>
 
-                <div>
-                    <ul class="navbar-nav ml-auto">
-
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto me-5">
                         <li class="nav-item dropdown">
-
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
                                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt=""
-                                    width="30" height="30" loading="lazy" class="d-inine-block">
+                                    width="30" height="30" loading="lazy" class="d-inline-block">
 
                             </a>
-
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="{{ url('admin-profile') }}">My Profile</a>
-                                <a class="dropdown-item" href="#">Settings</a>
-                                <a class="dropdown-item" href="{{ url('logout') }}">Log out</a>
-                            </div>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{{ url('user-profile') }}">My Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><a class="dropdown-item" href="{{ url('logout') }}">Log out</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -87,7 +84,7 @@
                     </div>
                 </div>
                 @yield('connect')
-            </div>  
+            </div>
 
         </div>
     </div>

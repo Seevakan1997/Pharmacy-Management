@@ -12,21 +12,42 @@
                                     Here</a></span>
                         </div>
                         <div class="card-body">
-                            <form action="#" method="POST" autocomplete="off">
+                            @if (Session::has('error'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>{{ Session::get('error') }}</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
 
+                            <form action="{{ url('authenticate') }}" method="POST" autocomplete="off">
+                                @csrf
                                 <div class="form-group">
                                     <label for="">Email Address</label>
                                     <div class="input-group mb-3">
+                                        <input type="text" class="form-control @error('email') is-invalid @enderror"
+                                            placeholder="Email Address" name='email' value="{{ old('email') }}">
 
-                                        <input type="text" class="form-control" placeholder="Email Address"
-                                            name='email'>
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="">Password</label>
                                     <div class="input-group mb-3">
-                                        <input type="password" class="form-control" placeholder="Password" name="password">
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                            placeholder="Password" name="password">
+
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
 
