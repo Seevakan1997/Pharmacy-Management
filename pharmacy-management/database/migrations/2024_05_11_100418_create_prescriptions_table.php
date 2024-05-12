@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('note');
             $table->string('address');
             $table->string('image1');
-            $table->string('image2');
-            $table->string('image3');
-            $table->string('image4');
-            $table->string('image5');
+            $table->string('image2')->nullable();
+            $table->string('image3')->nullable();
+            $table->string('image4')->nullable();
+            $table->string('image5')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

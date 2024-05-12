@@ -22,25 +22,38 @@
                         </tr>
                         <tr>
                             <td>
-                                <a href="{{ asset($user_drugs->image2) }}" target="_blank"><img
-                                        src="{{ asset($user_drugs->image2) }}" alt="" width="120"
-                                        height="110"></a>
+                                @if ($user_drugs->image2)
+                                    <a href="{{ asset($user_drugs->image2) }}" target="_blank">
+                                        <img src="{{ asset($user_drugs->image2) }}" alt="" width="120"
+                                            height="110">
+                                    </a>
+                                @endif
                             </td>
                             <td>
-                                <a href="{{ asset($user_drugs->image3) }}" target="_blank"><img
-                                        src="{{ asset($user_drugs->image3) }}" alt="" width="120"
-                                        height="110"></a>
+                                @if ($user_drugs->image3)
+                                    <a href="{{ asset($user_drugs->image3) }}" target="_blank">
+                                        <img src="{{ asset($user_drugs->image3) }}" alt="" width="120"
+                                            height="110">
+                                    </a>
+                                @endif
                             </td>
                             <td>
-                                <a href="{{ asset($user_drugs->image4) }}" target="_blank"><img
-                                        src="{{ asset($user_drugs->image3) }}" alt="" width="120"
-                                        height="110"></a>
+                                @if ($user_drugs->image4)
+                                    <a href="{{ asset($user_drugs->image4) }}" target="_blank">
+                                        <img src="{{ asset($user_drugs->image4) }}" alt="" width="120"
+                                            height="110">
+                                    </a>
+                                @endif
                             </td>
                             <td>
-                                <a href="{{ asset($user_drugs->image5) }}" target="_blank"><img
-                                        src="{{ asset($user_drugs->image4) }}" alt="" width="120"
-                                        height="110"></a>
+                                @if ($user_drugs->image5)
+                                    <a href="{{ asset($user_drugs->image5) }}" target="_blank">
+                                        <img src="{{ asset($user_drugs->image5) }}" alt="" width="120"
+                                            height="110">
+                                    </a>
+                                @endif
                             </td>
+
                         </tr>
 
                     </table>
@@ -58,14 +71,16 @@
                         </thead>
 
                         <tbody>
-                            @php $i=1; @endphp
-                            @php $total=0; @endphp
+                            @php
+                                $i = 1;
+                                $total = 0;
+                            @endphp
                             @forelse ($data as $row)
                                 <tr>
                                     <td>{{ $row->Medicine->drugs }}</td>
                                     <td class="text-right">{{ $row->Medicine->amount }} x {{ $row->quanity }}</td>
-                                    <td class="text-right">{{ $row->amount }}</td>
-                                    @php $total+= $row->amount; @endphp
+                                    <td class="text-right">{{ $row->Medicine->amount * $row->quanity }}</td>
+                                    @php $total+= $row->Medicine->amount * $row->quanity; @endphp
                                 </tr>
                             @empty
                                 <tr>
@@ -73,11 +88,12 @@
                                 </tr>
                             @endforelse
 
+
                             <tr>
-                                <td colspan="2" class="text-center">
+                                <td colspan="2" class="text-center fw-bold">
                                     Total
                                 </td>
-                                <td class="text-right">
+                                <td class="text-right fw-bold">
                                     {{ $total }}.00
                                 </td>
                             </tr>

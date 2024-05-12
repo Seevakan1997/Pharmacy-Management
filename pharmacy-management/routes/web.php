@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\PrecriptionController;
 use App\Http\Controllers\PreparedQuotationController;
+use App\Http\Controllers\QuaotationController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UploadedPrescriptionsController;
 use App\Http\Controllers\UserDashboardController;
@@ -48,8 +49,12 @@ Route::view('add-medicine', 'Admin.add-medicine');
 Route::post('store-medicine', [MedicineController::class, 'store']);
 Route::get('medicine-delete/{id}', [MedicineController::class, 'delete']);
 Route::get('prescription-list', [PrecriptionController::class, 'show']);
+Route::get('findPrice', [MedicineController::class, 'findPrice']);
 Route::get('upload-quotation/{id}', [UploadedPrescriptionsController::class, 'index']);
 Route::get('pending', [AdminDashboardController::class, 'pending']);
+Route::get('accept', [AdminDashboardController::class, 'accept']);
+Route::get('reject', [AdminDashboardController::class, 'reject']);
+Route::post('quation-add', [QuaotationController::class, 'store']);
 
 
 //User
@@ -59,3 +64,5 @@ Route::get('prescription-history', [PrecriptionController::class, 'index']);
 Route::view('upload-prescription', 'user.upload-prescription');
 Route::get('prepared-quotation', [PreparedQuotationController::class, 'index']);
 Route::post('precription-store', [PrecriptionController::class, 'store']);
+Route::get('quoation-details/{id}', [UploadedPrescriptionsController::class, 'Details']);
+Route::post('status-update', [PreparedQuotationController::class, 'store']);

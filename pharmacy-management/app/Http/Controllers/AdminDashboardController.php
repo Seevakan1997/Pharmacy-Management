@@ -14,17 +14,22 @@ class AdminDashboardController extends Controller
 
     public function accept()
     {
-        return view('Admin.accept');
+        $data =  DB::select('select order_id, status, prescriptions.note, SUM(amount) AS amount FROM quaotations INNER JOIN prescriptions ON prescriptions.id = quaotations.order_id where status=1 GROUP by(order_id);');
+        return view('Admin.accept', compact('data'));
     }
 
     public function reject()
     {
-        return view('Admin.reject');
+        $data =  DB::select('select order_id, status, prescriptions.note, SUM(amount) AS amount FROM quaotations INNER JOIN prescriptions ON prescriptions.id = quaotations.order_id where status=2 GROUP by(order_id);');
+        return view('Admin.reject', compact('data'));
     }
 
     public function pending()
     {
-        $data =  DB::select('select order_id, status, prescriptions.note, SUM(amount) AS amount FROM quaotations INNER JOIN prescriptions ON prescriptions.id = quaotations.order_id where status=0 GROUP by(order_id);');
+        $data =  DB::select('select order_id, status, prescriptions.note, SUM(amount) AS amount FROM quaotations INNER JOIN prescriptions ON prescriptions.id = quaotations.order_id where status = 0 GROUP by(order_id);');
+
+        // dd($data);
+
         return view('Admin.pending', compact('data'));
     }
 }

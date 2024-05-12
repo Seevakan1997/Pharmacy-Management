@@ -19,8 +19,8 @@ class Quaotation extends Model
         return $this->belongsTo(Medicine::class, 'drugs', 'id');
     }
 
-    public function PrecriptionModel()
+    public function Prescription()
     {
-        return $this->belongsTo(Precription::class, 'order_id', 'id');
+        return $this->belongsTo(Prescription::class, 'order_id', 'id');
     }
 }

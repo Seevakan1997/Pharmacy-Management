@@ -22,25 +22,34 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <div class="btn btn-warning rounded-pill px-4">
-                                Pending
-                            </div>
-                            <div class="btn btn-success rounded-pill px-4">
-                                Accept
-                            </div>
-                            <div class="btn btn-danger rounded-pill px-4">
-                                Reject
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" class="text-danger text-center">No Data Records</td>
-                    </tr>
+                    @php $i=1; @endphp
+                    @php $total=0; @endphp
+                    @forelse ($data as $row)
+                        <tr>
+                            <td>{{ $i++ }}</td>
+                            <td>{{ $row->note }}</td>
+                            <td>{{ $row->amount }}</td>
+                            <td>
+                                @if ($row->status == 0)
+                                    <div class="btn btn-warning rounded-pill px-4">
+                                        Pending
+                                    </div>
+                                @elseif ($row->status == 1)
+                                    <div class="btn btn-success rounded-pill px-4">
+                                        Accept
+                                    </div>
+                                @elseif ($row->status == 2)
+                                    <div class="btn btn-danger rounded-pill px-4">
+                                        Reject
+                                    </div>
+                                @endif
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4" class="text-danger text-center">No Data Records</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

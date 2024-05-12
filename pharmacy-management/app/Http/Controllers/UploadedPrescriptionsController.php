@@ -22,6 +22,6 @@ class UploadedPrescriptionsController extends Controller
         $drug = Medicine::all();
         $user_drugs = Prescription::find($id);
         $data = Quaotation::select('*')->where('order_id', $id)->get();
-        return view('user.Quotation-details', compact('drug', 'user_drugs', 'data'));
+        return view('user.quoation-details', compact('drug', 'user_drugs', 'data'));
     }
 }

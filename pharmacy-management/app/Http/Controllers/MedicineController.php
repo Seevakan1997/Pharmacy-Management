@@ -65,6 +65,7 @@ class MedicineController extends Controller
 
     public function findPrice(Request $request)
     {
+
         $data = Medicine::select('amount')->where('id', $request->id)->first();
 
         return response()->json($data);

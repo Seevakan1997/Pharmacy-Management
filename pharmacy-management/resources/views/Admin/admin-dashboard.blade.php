@@ -36,8 +36,8 @@
         <div class="col-12 col-lg-4 mb-3 mb-lg-0">
             <div class="card border-success">
                 <div class="card-body">
-                    <h5 class="card-title">Accept Prescription</h5>
-                    <p class="card-text">Accept Prescription</p>
+                    <h5 class="card-title">Accept Quotations</h5>
+                    <p class="card-text">Accept Quotations</p>
                 </div>
                 <div class="card-footer text-center font-weight-bold bg-success">
                     <a href="{{ url('accept') }}" class="text-white"><span>More Info <i class="fa fa-arrow-circle-right"
@@ -51,8 +51,8 @@
         <div class="col-12 col-lg-4 mb-3 mb-lg-0">
             <div class="card border-warning">
                 <div class="card-body">
-                    <h5 class="card-title">Pending Prescription</h5>
-                    <p class="card-text">Pending Prescription</p>
+                    <h5 class="card-title">Pending Quotations </h5>
+                    <p class="card-text">Pending Quotations </p>
                 </div>
                 <div class="card-footer text-center font-weight-bold bg-warning">
                     <a href="{{ url('pending') }}" class="text-dark"><span>More Info <i class="fa fa-arrow-circle-right"
@@ -64,8 +64,8 @@
         <div class="col-12 col-lg-4 mb-3 mb-lg-0">
             <div class="card border-danger">
                 <div class="card-body">
-                    <h5 class="card-title">Reject Prescription</h5>
-                    <p class="card-text">Reject Prescription</p>
+                    <h5 class="card-title">Reject Quotations</h5>
+                    <p class="card-text">Reject Quotations</p>
                 </div>
                 <div class="card-footer text-center font-weight-bold bg-danger">
                     <a href="{{ url('reject') }}" class="text-white"><span>More Info <i class="fa fa-arrow-circle-right"
