@@ -17,26 +17,35 @@
                         @csrf
                         <div class="form-group">
                             <label for="">Drugs Name</label>
-                            <input type="text" name="drugName" id="" class="form-control">
-                            <span class="invalid-feedback" role="alert">
-                                <strong></strong>
-                            </span>
+                            <input type="text" name="drugName" id=""
+                                class="form-control @error('drugName') is-invalid @enderror">
+                            @error('drugName')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="">Price</label>
-                            <input type="number" name="price" id="" class="form-control">
-                            <span class="invalid-feedback" role="alert">
-                                <strong></strong>
-                            </span>
+                            <input type="number" name="price" id=""
+                                class="form-control @error('price') is-invalid @enderror">
+                            @error('price')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="">Discount</label>
-                            <input type="number" name="discount" id="" class="form-control">
-                            <span class="invalid-feedback" role="alert">
-                                <strong></strong>
-                            </span>
+                            <input type="number" name="discount" id=""
+                                class="form-control @error('price') is-invalid @enderror">
+                            @error('discount')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
                         <button type="submit" class="btn btn-success">Submit</button>

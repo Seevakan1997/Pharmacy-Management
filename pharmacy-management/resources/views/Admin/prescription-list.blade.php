@@ -33,13 +33,13 @@
                         <td>{{ $row->address }}</td>
                         <td>
                             @if ($row->confirm == 0)
-                                <a href="{{ url('uploaded-prescriptions') }}/{{ $row->id }}"
-                                    class="btn btn-primary">Add medications</a>
+                                <a href="{{ url('upload-quotation') }}/{{ $row->id }}" class="btn btn-primary">Add
+                                    medications</a>
                                 <img src="https://sahussaintu.files.wordpress.com/2018/04/newgif5.gif" alt=""
                                     width="60" height="60">
                             @elseif($row->confirm == 1)
-                                <a href="{{ url('uploaded-prescriptions') }}/{{ $row->id }}"
-                                    class="btn btn-success">Update Medications</a>
+                                <a href="{{ url('upload-quotation') }}/{{ $row->id }}" class="btn btn-success">Update
+                                    Medications</a>
                             @endif
                         </td>
                     </tr>

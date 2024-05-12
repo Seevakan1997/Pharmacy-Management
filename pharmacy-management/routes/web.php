@@ -45,8 +45,11 @@ Route::get('accept', [AdminDashboardController::class, 'accept']);
 Route::get('reject', [AdminDashboardController::class, 'reject']);
 Route::get('pending', [AdminDashboardController::class, 'pending']);
 Route::view('add-medicine', 'Admin.add-medicine');
+Route::post('store-medicine', [MedicineController::class, 'store']);
+Route::get('medicine-delete/{id}', [MedicineController::class, 'delete']);
 Route::get('prescription-list', [PrecriptionController::class, 'show']);
-Route::get('uploaded-prescriptions', [UploadedPrescriptionsController::class, 'index']);
+Route::get('upload-quotation/{id}', [UploadedPrescriptionsController::class, 'index']);
+Route::get('pending', [AdminDashboardController::class, 'pending']);
 
 
 //User

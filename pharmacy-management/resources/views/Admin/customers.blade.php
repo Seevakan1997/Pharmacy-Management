@@ -22,30 +22,33 @@
                     <th scope="col">Role</th>
                 </thead>
 
+                @php $i=1 @endphp
+
                 <tbody>
                     <tr>
+                        @forelse ($user as $row)
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ $i++ }}</td>
+                        <td>{{ $row->name }}</td>
+                        <td>{{ $row->email }}</td>
+                        <td>{{ $row->address }}</td>
+                        <td>{{ $row->mobile_no }}</td>
                         <td>
-
-                            <div class="btn btn-success rounded-pill px-5">
-                                Admin
-                            </div>
-
-                            <div class="btn btn-info rounded-pill px-5">
-                                customer
-                            </div>
-
+                            @if ($row->role == '1')
+                                <div class="btn btn-success rounded-pill px-5">
+                                    Admin
+                                </div>
+                            @else
+                                <div class="btn btn-info rounded-pill px-5">
+                                    customer
+                                </div>
+                            @endif
 
                         </td>
                     </tr>
-
+                @empty
                     <td colspan="5" class="text-danger text-center font-weight-bold">No Data Record</td>
-
+                    @endforelse
                     </tr>
                 </tbody>
             </table>

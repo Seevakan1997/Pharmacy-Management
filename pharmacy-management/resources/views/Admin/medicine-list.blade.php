@@ -6,16 +6,18 @@
 @endsection
 
 @section('connect')
-    <div class="row">
-        <div class="col-12 col-lg-6 ml-lg-auto">
-            <div class="alert alert-success alert-dismissible fade show mt-2 " role="alert" id="errorAlert">
-                <strong></strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+    @if (Session::get('message'))
+        <div class="row">
+            <div class="col-12 col-lg-6 ml-lg-auto">
+                <div class="alert alert-success alert-dismissible fade show mt-2 " role="alert" id="errorAlert">
+                    <strong>{{ Session::get('message') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+    @endif
 
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
@@ -40,31 +42,38 @@
 
 
 
+                    @php $i=1 @endphp
+
                     <tbody>
                         <tr>
-
+                            @forelse ($medicine as $row)
                         <tr>
-                            <th scope="row"></th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <th scope="row">{{ $i++ }}</th>
+                            <td>{{ $row->drugs }}</td>
+                            <td>{{ $row->amount }}</td>
+                            <td>{{ $row->discount }}</td>
                             <td class="text-center">
                                 <a href="" class="btn btn-warning"><i class="fa fa-pencil-square-o"
                                         aria-hidden="true"></i> Update</a>
                             </td>
                             <td>
-                                <a href="" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                <a href="{{ url('medicine-delete') }}/{{ $row->id }}" class="btn btn-danger"><i
+                                        class="fa fa-trash-o" aria-hidden="true"></i>
                                     Delete</a>
                             </td>
                         </tr>
-
+                    @empty
                         <td colspan="5" class="text-danger text-center">No Data Record</td>
-
+                        @endforelse
                         </tr>
                     </tbody>
                 </table>
             </div>
-
+            {{ $medicine->links() }}
         </div>
     </div>
+@endsection
+
+@section('alertHide')
+    $('#errorAlert').hide(4000).slidUp(400);
 @endsection
