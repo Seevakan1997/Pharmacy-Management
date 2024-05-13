@@ -1,7 +1,8 @@
 @extends('user.home')
 
 @section('bar')
-    <span class="float-right">Home / Dashboard</span>
+    <span class="float-right">
+        Home / Dashboard</span>
 @endsection
 
 @section('connect')
@@ -10,7 +11,13 @@
             <div class="card border-primary">
                 <div class="card-body">
                     <h5 class="card-title">Total Prescriptions</h5>
-                    <p class="card-text">20</p>
+                    <p class="card-text">
+                        @if ($totalPrecription)
+                            {{ $totalPrecription }}
+                        @else
+                            0
+                        @endif
+                    </p>
                 </div>
                 <div class="card-footer bg-primary text-center font-weight-bold">
                     <a href="{{ url('prescription-history') }}" class="text-white"><span>More Info <i
@@ -23,7 +30,13 @@
             <div class="card border-success">
                 <div class="card-body">
                     <h5 class="card-title">Accepted Prescriptions</h5>
-                    <p class="card-text">0</p>
+                    <p class="card-text">
+                        @if ($accept)
+                            {{ $accept }}
+                        @else
+                            0
+                        @endif
+                    </p>
                 </div>
                 <div class="card-footer bg-success text-center font-weight-bold">
                     <a href="#" class="text-white"><span>More Info <i class="fa fa-arrow-circle-right"
@@ -36,7 +49,13 @@
             <div class="card border-danger">
                 <div class="card-body">
                     <h5 class="card-title">Rejected Prescriptions</h5>
-                    <p class="card-text">6</p>
+                    <p class="card-text">
+                        @if ($reject)
+                            {{ $reject }}
+                        @else
+                            0
+                        @endif
+                    </p>
                 </div>
                 <div class="card-footer bg-danger text-center font-weight-bold">
                     <a href="#" class="text-white"><span>More Info <i class="fa fa-arrow-circle-right"
@@ -51,7 +70,13 @@
             <div class="card border-warning">
                 <div class="card-body">
                     <h5 class="card-title">Prepared Quotations</h5>
-                    <p class="card-text">2</p>
+                    <p class="card-text">
+                        @if ($pending)
+                            {{ $pending }}
+                        @else
+                            0
+                        @endif
+                    </p>
                 </div>
                 <div class="card-footer bg-warning text-center font-weight-bold">
                     <a href="{{ url('prepared-quotation') }}" class="text-dark"><span>More Info <i

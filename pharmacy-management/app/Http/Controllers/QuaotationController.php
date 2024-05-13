@@ -51,7 +51,7 @@ class QuaotationController extends Controller
 
         $data->user_id = $request->input('user_id');
 
-        // DB::table('prescriptions')->where('id', $request->id)->update(array('confirm' => $request->order));
+        DB::table('prescriptions')->where('id', $request->id)->update(array('confirm' => $request->order));
 
         $data->save();
 

@@ -23,6 +23,35 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto me-5">
                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownNotifications"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @if (auth()->user()->unreadNotifications->count() > 0)
+                                    <img src="../image/notification-bell.png" alt="Bell Icon" width="30"
+                                        height="30">
+                                @else
+                                    <img src="../image/bell-icon.png" alt="Bell Icon" width="30" height="30">
+                                @endif
+
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownNotifications">
+                                @forelse (auth()->user()->notifications as $notification)
+                                    <li><a class="dropdown-item" href="#">{{ $notification->data['message'] }}</a>
+                                    </li>
+                                @empty
+                                    <li><a class="dropdown-item" href="#">No notifications</a></li>
+                                @endforelse
+                                <li style="background-color: #e3f2fd;">
+                                    <form action="{{ route('notifications.clear') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item text-primary">Clear all
+                                            notifications</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 @if (Auth::user()->user_image)

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Medicine;
+use App\Models\Prescription;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -9,7 +12,13 @@ class AdminDashboardController extends Controller
 {
     public function index()
     {
-        return view('Admin.admin-dashboard');
+        $customers = User::where('role', '0')->count();
+        $medicines = Medicine::all()->count();
+        $newMedicines = Prescription::where('confirm', '0')->count();
+        $accept = DB::table('quaotations')->where('status', '1')->distinct('order_id')->count('status');
+        $reject = DB::table('quaotations')->where('status', '2')->distinct('order_id')->count('status');
+        $pending = DB::table('quaotations')->where('status', '0')->distinct('order_id')->count('status');
+        return view('Admin.admin-dashboard', compact('customers', 'medicines', 'newMedicines', 'accept', 'reject', 'pending'));
     }
 
     public function accept()
