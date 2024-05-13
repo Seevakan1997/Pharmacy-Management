@@ -16,7 +16,7 @@ class PreparedQuotationController extends Controller
     public function index()
     {
         $data = DB::select('
-        SELECT order_id, status, prescriptions.note, SUM(amount) AS amount
+        SELECT order_id, status, prescriptions.note, SUM(total) AS amount
         FROM quaotations
         INNER JOIN prescriptions ON prescriptions.id = quaotations.order_id
         WHERE quaotations.user_id = ?
