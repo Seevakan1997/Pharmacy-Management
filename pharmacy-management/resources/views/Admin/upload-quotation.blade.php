@@ -100,7 +100,7 @@
                         </tbody>
                     </table>
 
-                    <form action="{{ url('quation-add') }}" method="POST">
+                    <form id="addQuotationForm" action="{{ url('quation-add') }}" method="POST">
                         @csrf
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-6 col-form-label text-right">Drug</label>
@@ -155,10 +155,30 @@
                         <hr>
                     </form>
                     <div class="text-end">
-                        <button class="btn btn-primary">Send Quotation</button>
+                        <button id="sendQuotationBtn" class="btn btn-primary">Send Quotation</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('ajax')
+    <script>
+        document.getElementById('sendQuotationBtn').addEventListener('click', function() {
+            console.log('Button clicked');
+            console.log($('#addQuotationForm').serialize());
+            $.ajax({
+                url: "{{ url('send-quotation') }}",
+                method: "POST",
+                data: $('#addQuotationForm').serialize(),
+                success: function(response) {
+                    alert('Quotation sent successfully!');
+                },
+                error: function(xhr, status, error) {
+                    alert('Error sending quotation: ' + error);
+                }
+            });
+        });
+    </script>
 @endsection

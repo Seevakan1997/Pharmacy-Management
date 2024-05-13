@@ -30,8 +30,8 @@
                             <td>{{ $i++ }}</td>
                             <td>{{ $row->Medicine->drugs }}</td>
                             <td>{{ $row->Medicine->amount }} x {{ $row->quanity }}</td>
-                            <td class="text-right">{{ $row->amount }}</td>
-                            @php $total+= $row->amount; @endphp
+                            <td class="text-right">{{ $row->Medicine->amount * $row->quanity }}</td>
+                            @php $total+= $row->Medicine->amount * $row->quanity; @endphp
                         </tr>
                     @empty
                         <tr>

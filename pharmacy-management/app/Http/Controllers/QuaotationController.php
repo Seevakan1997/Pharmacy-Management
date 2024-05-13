@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Medicine;
 use App\Models\Quaotation;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\QuotationNotification;
 
 class QuaotationController extends Controller
 {
@@ -48,9 +53,43 @@ class QuaotationController extends Controller
 
         // DB::table('prescriptions')->where('id', $request->id)->update(array('confirm' => $request->order));
 
-
         $data->save();
 
+
+
         return redirect()->back();
+    }
+
+    public function sendQuotation(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required',
+            'prescription_id' => 'required',
+        ]);
+
+        $userId = $request->input('user_id');
+        $orderId = $request->input('prescription_id');
+
+        $quotations = Quaotation::with('medicine')
+            ->where('user_id', $userId)
+            ->where('order_id', $orderId)
+            ->get();
+
+        $quotationDetails = [];
+        foreach ($quotations as $quotation) {
+            $quotationDetails[] = [
+                'drugs' => $quotation->medicine->drugs,
+                'quanity' => $quotation->quanity,
+                'total' => $quotation->total,
+            ];
+        }
+
+        $admin = Auth::user();
+
+        $user = User::findOrFail($request->input('user_id'));
+
+        Notification::send($user, new QuotationNotification($admin, $user, $quotationDetails));
+
+        return redirect()->back()->with('success', 'Quotation email sent successfully!');
     }
 }

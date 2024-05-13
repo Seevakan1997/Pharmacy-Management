@@ -55,6 +55,8 @@ Route::get('pending', [AdminDashboardController::class, 'pending']);
 Route::get('accept', [AdminDashboardController::class, 'accept']);
 Route::get('reject', [AdminDashboardController::class, 'reject']);
 Route::post('quation-add', [QuaotationController::class, 'store']);
+Route::post('send-quotation', [QuaotationController::class, 'sendQuotation'])->name('send.quotation');
+
 
 
 //User
