@@ -19,6 +19,7 @@
                         <th>No</th>
                         <th>Note</th>
                         <th>Delivery Address</th>
+                        <th>Delivery Time</th>
                         <th colspan="5" class="text-center">Images</th>
                     </tr>
                 </thead>
@@ -30,35 +31,40 @@
                             <td>{{ $i++ }}</td>
                             <td>{{ $row->note }}</td>
                             <td>{{ $row->address }}</td>
+                            <td>{{ $row->delivery_time }}</td>
                             <td class="text-center"><a href="{{ asset($row->image1) }}" target="_blank"><img
                                         src="{{ asset($row->image1) }}" alt="" width="50px" height="50px"
                                         class="rounded-circle"></a>
                             </td>
                             <td class="text-center">
-                                @if($row->image2)
+                                @if ($row->image2)
                                     <a href="{{ asset($row->image2) }}" target="_blank">
-                                        <img src="{{ asset($row->image2) }}" alt="" width="50px" height="50px" class="rounded-circle">
+                                        <img src="{{ asset($row->image2) }}" alt="" width="50px" height="50px"
+                                            class="rounded-circle">
                                     </a>
                                 @endif
                             </td>
                             <td class="text-center">
-                                @if($row->image3)
+                                @if ($row->image3)
                                     <a href="{{ asset($row->image3) }}" target="_blank">
-                                        <img src="{{ asset($row->image3) }}" alt="" width="50px" height="50px" class="rounded-circle">
+                                        <img src="{{ asset($row->image3) }}" alt="" width="50px" height="50px"
+                                            class="rounded-circle">
                                     </a>
                                 @endif
                             </td>
                             <td class="text-center">
-                                @if($row->image4)
+                                @if ($row->image4)
                                     <a href="{{ asset($row->image4) }}" target="_blank">
-                                        <img src="{{ asset($row->image4) }}" alt="" width="50px" height="50px" class="rounded-circle">
+                                        <img src="{{ asset($row->image4) }}" alt="" width="50px" height="50px"
+                                            class="rounded-circle">
                                     </a>
                                 @endif
                             </td>
                             <td class="text-center">
-                                @if($row->image5)
+                                @if ($row->image5)
                                     <a href="{{ asset($row->image5) }}" target="_blank">
-                                        <img src="{{ asset($row->image5) }}" alt="" width="50px" height="50px" class="rounded-circle">
+                                        <img src="{{ asset($row->image5) }}" alt="" width="50px" height="50px"
+                                            class="rounded-circle">
                                     </a>
                                 @endif
                             </td>

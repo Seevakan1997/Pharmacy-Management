@@ -38,6 +38,7 @@ class PrecriptionController extends Controller
         $user = new Prescription();
         $user->note = $request->input('note');
         $user->address = $request->input('address');
+        $user->delivery_time = $request->delivery_time;
         $user->user_id = $request->input('user_id');
 
         if ($request->hasFile('image1')) {

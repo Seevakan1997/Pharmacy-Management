@@ -17,7 +17,8 @@
                     <th scope="col">#</th>
                     <th scope="col">Customer Name</th>
                     <th scope="col">Note</th>
-                    <th scope="col">Delivery address</th>
+                    <th scope="col">Delivery Address</th>
+                    <th scope="col">Delivery Time</th>
                     <th scope="col">Action</th>
                 </thead>
 
@@ -31,6 +32,7 @@
                         <td>{{ $row->user->name }}</td>
                         <td>{{ $row->note }}</td>
                         <td>{{ $row->address }}</td>
+                        <td>{{ $row->delivery_time }}</td>
                         <td>
                             @if ($row->confirm == 0)
                                 <a href="{{ url('upload-quotation') }}/{{ $row->id }}" class="btn btn-primary">Add
