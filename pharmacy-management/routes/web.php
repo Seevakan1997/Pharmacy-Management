@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\CostomerController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\PrecriptionController;
@@ -28,7 +29,7 @@ Route::get('/', function () {
 });
 
 //Auth
-
+Route::get('/', [HomeController::class, 'index']);
 Route::get('register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('store', [RegisterController::class, 'store']);
 Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');

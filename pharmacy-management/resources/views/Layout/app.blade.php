@@ -49,8 +49,9 @@
             </div>
         </nav>
     </header>
-    <div class="banner">
 
+    <div class="banner">
+        @yield('home-content');
         @yield('login')
 
         @yield('register')
