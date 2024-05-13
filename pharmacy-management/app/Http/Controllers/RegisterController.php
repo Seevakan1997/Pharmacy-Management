@@ -41,4 +41,32 @@ class RegisterController extends Controller
 
         return redirect('user-dashboard');
     }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'mobile' => ['required', 'min:10'],
+            'address' => 'required',
+            'dob' => 'required',
+            'user_image' => 'image|mimes:jpeg,jpg,png,gif,svg|max:2048',
+        ]);
+
+        $user = User::find($id);
+
+        if ($request->file('user_image')) {
+            $user_image = time() . rand(1, 1000) . '.' . $request->user_image->extension();
+            $request->user_image->move(public_path('images'), $user_image);
+            $user->user_image = "images/" . $user_image;
+        }
+
+        $user->name = $request->input('name');
+        $user->mobile_no = $request->input('mobile');
+        $user->address = $request->input('address');
+        $user->dob = $request->input('dob');
+
+        $user->save();
+
+        return redirect()->back();
+    }
 }

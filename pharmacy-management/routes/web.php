@@ -59,6 +59,8 @@ Route::post('quation-add', [QuaotationController::class, 'store']);
 Route::post('send-quotation', [QuaotationController::class, 'sendQuotation'])->name('send.quotation');
 Route::post('/notifications/clear', [PreparedQuotationController::class, 'clearNotifications'])
     ->name('notifications.clear');
+Route::view('admin-profile', 'Admin.user-profile');
+Route::put('admin-profile-update/{id}', [RegisterController::class, 'update']);
 
 
 
@@ -71,3 +73,5 @@ Route::get('prepared-quotation', [PreparedQuotationController::class, 'index']);
 Route::post('precription-store', [PrecriptionController::class, 'store']);
 Route::get('quoation-details/{id}', [UploadedPrescriptionsController::class, 'Details']);
 Route::post('status-update', [PreparedQuotationController::class, 'store']);
+Route::view('user-profile', 'user.user-profile');
+Route::put('user-profile-update/{id}', [RegisterController::class, 'update']);

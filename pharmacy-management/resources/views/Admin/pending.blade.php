@@ -6,8 +6,10 @@
 
 @section('connect')
     <div class="card">
-        <div class="card-header">
-            <span class="font-weight-bold">Pending Quotation</span>
+
+        <div class="card-header d-flex justify-content-between align-items-center">
+            Pending Quotation
+            <a href="{{ url('admin-dashboard') }}" class="btn btn-primary float-right">Back</a>
         </div>
 
         <div class="card-body">

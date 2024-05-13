@@ -6,8 +6,10 @@
 
 @section('connect')
     <div class="card">
-        <div class="card-header">
-            <span class="font-weight-bold">Reject Quotation</span>
+
+        <div class="card-header d-flex justify-content-between align-items-center">
+            Reject Quotation
+            <a href="{{ url('admin-dashboard') }}" class="btn btn-primary float-right">Back</a>
         </div>
 
         <div class="card-body">
